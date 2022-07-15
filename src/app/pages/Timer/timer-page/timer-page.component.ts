@@ -17,19 +17,6 @@ export class TimerPageComponent {
     hours: 0,
   };
 
-  secondsOption: number[] = [];
-  minutesOption: number[] = [];
-  hoursOption: number[] = [];
-
-  constructor() {
-    for (let i = 1; i < 60; i++) {
-      this.secondsOption.push(i);
-      this.minutesOption.push(i);
-    }
-
-    for (let i = 1; i <= 24; i++) this.hoursOption.push(i);
-  }
-
   onSelect(object: { name: string; value: number }) {
     const { name, value } = object;
     if (name === 'hours') this.time.hours = value;
@@ -59,6 +46,7 @@ export class TimerPageComponent {
 
   handleInterval(command: string) {
     if (command === 'stop') return clearInterval(this.interval);
+    clearInterval(this.interval);
     this.interval = setInterval(() => {
       this.time.seconds === 0 &&
       this.time.minutes === 0 &&
