@@ -1,0 +1,7 @@
+<div class="form-grop">
+  <label [for]="name">{{ name | titlecase }}</label>
+  <select [id]="name" class="form-select" (change)="onSelect($event)">
+    <option selected>0</option>
+    <option *ngFor="let num of array" [value]="num">{{ num }}</option>
+  </select>
+</div>

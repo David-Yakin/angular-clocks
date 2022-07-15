@@ -1,0 +1,59 @@
+<!-- Headlines -->
+<div class="text-center alert-info">
+  <h1 class="text-center">Timer Watch</h1>
+  <h2 class="fs-5">
+    Select the time and click the Start button to turn on the timer
+  </h2>
+  <hr />
+</div>
+
+<!-- Timer time selection fields -->
+<div class="center">
+  <div class="d-flex row p-4 col-10 col-md-6 col-xl-4">
+    <div class="col-4">
+      <select-box
+        name="hours"
+        [number]="24"
+        (select)="onSelect($event)"
+      ></select-box>
+    </div>
+    <div class="col-4">
+      <select-box
+        name="minutes"
+        [number]="60"
+        (select)="onSelect($event)"
+      ></select-box>
+    </div>
+    <div class="col-4">
+      <select-box
+        name="seconds"
+        [number]="60"
+        (select)="onSelect($event)"
+      ></select-box>
+    </div>
+  </div>
+</div>
+
+<!-- The clock -->
+<div class="center mt-4">
+  <div class="col-12 col-md-4 p-2 bg-black">
+    <div class="text-danger text-center fs-1">
+      {{ time.hours < 10 ? "0" + time.hours : time.hours }}:
+      {{ time.minutes < 10 ? "0" + time.minutes : time.minutes }}:
+      {{ time.seconds < 10 ? "0" + time.seconds : time.seconds }}
+    </div>
+  </div>
+</div>
+
+<!-- controllers -->
+<div class="center">
+  <div class="my-2 alert-info rounded p-2">
+    <button class="btn btn-primary m-2" (click)="reset()">Reset</button>
+    <button class="btn btn-danger m-2" (click)="handleInterval('stop')">
+      Stop
+    </button>
+    <button class="btn btn-success m-2" (click)="handleInterval('continue')">
+      {{ time.seconds === 0 ? "Start" : "Continue" }}
+    </button>
+  </div>
+</div>
